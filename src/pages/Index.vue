@@ -27,7 +27,7 @@
         <div class="row-xl" />
         <div class="row-xl" />
         <div class="row-xl" />
-        <q-btn v-if="checkEmpty(6)" round color="green" icon="event_seat" />
+        <q-btn v-if="checkEmpty(6)" round color="green" icon="event_seat" @click="openBookingWindow(6)"/>
         <q-btn v-if="!checkEmpty(6)" round color="red" icon="event_seat" @click="showBookedSeat(6)"/>
         <q-btn v-if="checkEmpty(7)" round color="green" icon="event_seat" />
         <q-btn v-if="!checkEmpty(7)" round color="red" icon="event_seat" @click="showBookedSeat(7)"/>
@@ -75,7 +75,11 @@
 
         <q-card-actions class="popup-bg row" align="right">
           <q-btn flat label="Cancel" color="grey-10" v-close-popup />
-          <q-btn flat label="Book Seat" color="red-6" @click="bookSeat()" />
+          <q-btn flat label="Book Seat" color="red-6" @click="bookSeat()" :loading="booking">
+            <template v-slot:loading>
+              <q-spinner-ios />
+            </template>
+          </q-btn>
         </q-card-actions>
       </q-card>
     </q-dialog>
@@ -121,10 +125,11 @@ export default {
       isSeatsLoaded: false,
       isSeatBooked: false,
       bookedSeat: 0,
-      isBookingWindow: true,
+      isBookingWindow: false,
       name: '',
       email: '',
-      empty: false
+      empty: false,
+      booking: false
     }
   },
   methods: {
@@ -137,10 +142,10 @@ export default {
     bookSeatRequest: function (seatNo, name, email) {
       const formData = new FormData()
       formData.append('seatNo', seatNo)
-      formData.append('seatNo', seatNo)
-      formData.append('seatNo', seatNo)
-      return backendInstance.post('/getCustomURL', formData)
-    }
+      formData.append('name', name)
+      formData.append('email', email)
+      return backendInstance.post('/bookSeat', formData)
+    },
     checkEmpty: function (seat) {
       if (this.isSeatsLoaded) {
         return this.seats[seat].booked === false;
@@ -153,27 +158,37 @@ export default {
     },
     openBookingWindow: function (seat) {
       this.isBookingWindow = true
+      this.bookedSeat = seat
     },
     bookSeat: function () {
       const seat = this.bookedSeat
       const name = this.name
       const email = this.email
+      this.booking = true
 
       if (email === '' || name === '') {
         this.empty = true
       } else {
+        const that = this
+        this.bookSeatRequest(seat, name, email)
+        .then(response => {
+          const seatId = response.data.id
+          console.log(seatId)
+          this.isBookingWindow = false
+          // go to results page
+        }).catch(error => {
+          const status = error.response.status
 
+          if (status === 409) {
+
+          }
+        }).finally(_ => {
+          this.booking = false
+        })
       }
     }
   },
   created: function () {
-    const that = this
-    this.getTest()
-    .then(response => {
-      this.test = response.data
-      console.log(this.test)
-    })
-
     this.getSeats()
     .then(response => {
       this.seats = response.data
