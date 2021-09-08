@@ -13,36 +13,94 @@
 
       <q-spinner-ios v-if="!isSeatsLoaded" color="red" size="6em"/>
       <div v-if="isSeatsLoaded" class="row q-gutter-sm">
-
         <q-btn v-if="checkEmpty(1)" round color="green" icon="event_seat" @click="openBookingWindow(1)"/>
         <q-btn v-if="!checkEmpty(1)" round color="red" icon="event_seat" @click="showBookedSeat(1)" />
-        <q-btn v-if="checkEmpty(2)" round color="green" icon="event_seat" />
+        <q-btn v-if="checkEmpty(2)" round color="green" icon="event_seat" @click="openBookingWindow(2)"/>
         <q-btn v-if="!checkEmpty(2)" round color="red" icon="event_seat" @click="showBookedSeat(2)"/>
-        <q-btn v-if="checkEmpty(3)" round color="green" icon="event_seat" />
+        <q-btn v-if="checkEmpty(3)" round color="green" icon="event_seat" @click="openBookingWindow(3)"/>
         <q-btn v-if="!checkEmpty(3)" round color="red" icon="event_seat" @click="showBookedSeat(3)"/>
-        <q-btn v-if="checkEmpty(4)" round color="green" icon="event_seat" />
+        <q-btn v-if="checkEmpty(4)" round color="green" icon="event_seat" @click="openBookingWindow(4)"/>
         <q-btn v-if="!checkEmpty(4)" round color="red" icon="event_seat" @click="showBookedSeat(4)"/>
-        <q-btn v-if="checkEmpty(5)" round color="green" icon="event_seat" />
+        <q-btn v-if="checkEmpty(5)" round color="green" icon="event_seat" @click="openBookingWindow(5)"/>
         <q-btn v-if="!checkEmpty(5)" round color="red" icon="event_seat" @click="showBookedSeat(5)"/>
         <div class="row-xl" />
         <div class="row-xl" />
         <div class="row-xl" />
         <q-btn v-if="checkEmpty(6)" round color="green" icon="event_seat" @click="openBookingWindow(6)"/>
         <q-btn v-if="!checkEmpty(6)" round color="red" icon="event_seat" @click="showBookedSeat(6)"/>
-        <q-btn v-if="checkEmpty(7)" round color="green" icon="event_seat" />
+        <q-btn v-if="checkEmpty(7)" round color="green" icon="event_seat" @click="openBookingWindow(7)"/>
         <q-btn v-if="!checkEmpty(7)" round color="red" icon="event_seat" @click="showBookedSeat(7)"/>
-        <q-btn v-if="checkEmpty(8)" round color="green" icon="event_seat" />
+        <q-btn v-if="checkEmpty(8)" round color="green" icon="event_seat" @click="openBookingWindow(8)"/>
         <q-btn v-if="!checkEmpty(8)" round color="red" icon="event_seat" @click="showBookedSeat(8)"/>
-        <q-btn v-if="checkEmpty(9)" round color="green" icon="event_seat" />
+        <q-btn v-if="checkEmpty(9)" round color="green" icon="event_seat" @click="openBookingWindow(9)"/>
         <q-btn v-if="!checkEmpty(9)" round color="red" icon="event_seat" @click="showBookedSeat(9)"/>
-        <q-btn v-if="checkEmpty(10)" round color="green" icon="event_seat" />
+        <q-btn v-if="checkEmpty(10)" round color="green" icon="event_seat" @click="openBookingWindow(10)"/>
         <q-btn v-if="!checkEmpty(10)" round color="red" icon="event_seat" @click="showBookedSeat(10)"/>
       </div>
-      <div class="text-h7" >
-        {{seats[1]}}
+
+      <div v-if="isSeatsLoaded" class="row q-gutter-sm">
+        <q-btn v-if="checkEmpty(11)" round color="green" icon="event_seat" @click="openBookingWindow(11)"/>
+        <q-btn v-if="!checkEmpty(11)" round color="red" icon="event_seat" @click="showBookedSeat(11)" />
+        <q-btn v-if="checkEmpty(12)" round color="green" icon="event_seat" @click="openBookingWindow(12)"/>
+        <q-btn v-if="!checkEmpty(12)" round color="red" icon="event_seat" @click="showBookedSeat(12)"/>
+        <q-btn v-if="checkEmpty(13)" round color="green" icon="event_seat" @click="openBookingWindow(13)"/>
+        <q-btn v-if="!checkEmpty(13)" round color="red" icon="event_seat" @click="showBookedSeat(13)"/>
+        <q-btn v-if="checkEmpty(14)" round color="green" icon="event_seat" @click="openBookingWindow(14)"/>
+        <q-btn v-if="!checkEmpty(14)" round color="red" icon="event_seat" @click="showBookedSeat(14)"/>
+        <q-btn v-if="checkEmpty(15)" round color="green" icon="event_seat" @click="openBookingWindow(15)"/>
+        <q-btn v-if="!checkEmpty(15)" round color="red" icon="event_seat" @click="showBookedSeat(15)"/>
+        <div class="row-xl" />
+        <div class="row-xl" />
+        <div class="row-xl" />
+        <q-btn v-if="checkEmpty(16)" round color="green" icon="event_seat" @click="openBookingWindow(16)"/>
+        <q-btn v-if="!checkEmpty(16)" round color="red" icon="event_seat" @click="showBookedSeat(16)"/>
+        <q-btn v-if="checkEmpty(17)" round color="green" icon="event_seat" @click="openBookingWindow(17)"/>
+        <q-btn v-if="!checkEmpty(17)" round color="red" icon="event_seat" @click="showBookedSeat(17)"/>
+        <q-btn v-if="checkEmpty(18)" round color="green" icon="event_seat" @click="openBookingWindow(18)"/>
+        <q-btn v-if="!checkEmpty(18)" round color="red" icon="event_seat" @click="showBookedSeat(18)"/>
+        <q-btn v-if="checkEmpty(19)" round color="green" icon="event_seat" @click="openBookingWindow(19)"/>
+        <q-btn v-if="!checkEmpty(19)" round color="red" icon="event_seat" @click="showBookedSeat(19)"/>
+        <q-btn v-if="checkEmpty(20)" round color="green" icon="event_seat" @click="openBookingWindow(20)"/>
+        <q-btn v-if="!checkEmpty(20)" round color="red" icon="event_seat" @click="showBookedSeat(20)"/>
+      </div>
+
+      <div v-if="isSeatsLoaded" class="row q-gutter-sm">
+        <q-btn v-if="checkEmpty(21)" round color="green" icon="event_seat" @click="openBookingWindow(21)"/>
+        <q-btn v-if="!checkEmpty(21)" round color="red" icon="event_seat" @click="showBookedSeat(21)" />
+        <q-btn v-if="checkEmpty(22)" round color="green" icon="event_seat" @click="openBookingWindow(22)"/>
+        <q-btn v-if="!checkEmpty(22)" round color="red" icon="event_seat" @click="showBookedSeat(22)"/>
+        <q-btn v-if="checkEmpty(23)" round color="green" icon="event_seat" @click="openBookingWindow(23)"/>
+        <q-btn v-if="!checkEmpty(23)" round color="red" icon="event_seat" @click="showBookedSeat(23)"/>
+        <q-btn v-if="checkEmpty(24)" round color="green" icon="event_seat" @click="openBookingWindow(24)"/>
+        <q-btn v-if="!checkEmpty(24)" round color="red" icon="event_seat" @click="showBookedSeat(24)"/>
+        <q-btn v-if="checkEmpty(25)" round color="green" icon="event_seat" @click="openBookingWindow(25)"/>
+        <q-btn v-if="!checkEmpty(25)" round color="red" icon="event_seat" @click="showBookedSeat(25)"/>
+        <div class="row-xl" />
+        <div class="row-xl" />
+        <div class="row-xl" />
+        <q-btn v-if="checkEmpty(26)" round color="green" icon="event_seat" @click="openBookingWindow(26)"/>
+        <q-btn v-if="!checkEmpty(26)" round color="red" icon="event_seat" @click="showBookedSeat(26)"/>
+        <q-btn v-if="checkEmpty(27)" round color="green" icon="event_seat" @click="openBookingWindow(27)"/>
+        <q-btn v-if="!checkEmpty(27)" round color="red" icon="event_seat" @click="showBookedSeat(27)"/>
+        <q-btn v-if="checkEmpty(28)" round color="green" icon="event_seat" @click="openBookingWindow(28)"/>
+        <q-btn v-if="!checkEmpty(28)" round color="red" icon="event_seat" @click="showBookedSeat(28)"/>
+        <q-btn v-if="checkEmpty(29)" round color="green" icon="event_seat" @click="openBookingWindow(29)"/>
+        <q-btn v-if="!checkEmpty(29)" round color="red" icon="event_seat" @click="showBookedSeat(29)"/>
+        <q-btn v-if="checkEmpty(30)" round color="green" icon="event_seat" @click="openBookingWindow(30)"/>
+        <q-btn v-if="!checkEmpty(30)" round color="red" icon="event_seat" @click="showBookedSeat(30)"/>
       </div>
 
       <br />
+
+      <div class="column items-center">
+        <div class="col text-h7" >
+          Made by Cheng Weixuan
+        </div>
+
+        <a class="col text-h7" href="https://github.com/chengweixuan">
+          GitHub: chengweixuan
+        </a>
+      </div>
     </div>
 
     <q-dialog v-model="isSeatBooked">
@@ -53,6 +111,22 @@
 
         <q-card-section class="">
           Seat is already booked!
+        </q-card-section>
+
+        <q-card-actions class="popup-bg" align="right">
+          <q-btn flat label="OK" color="red-6" v-close-popup />
+        </q-card-actions>
+      </q-card>
+    </q-dialog>
+
+    <q-dialog v-model="invalid">
+      <q-card>
+        <q-card-section class="bg-red">
+          <div class="text-h6">Invalid Email</div>
+        </q-card-section>
+
+        <q-card-section class="">
+          Please enter a valid email address
         </q-card-section>
 
         <q-card-actions class="popup-bg" align="right">
@@ -121,6 +195,7 @@ export default {
   data: function () {
     return{
       seats: [],
+      vacancy: [],
       test: '',
       isSeatsLoaded: false,
       isSeatBooked: false,
@@ -129,7 +204,8 @@ export default {
       name: '',
       email: '',
       empty: false,
-      booking: false
+      booking: false,
+      invalid: false
     }
   },
   methods: {
@@ -148,7 +224,9 @@ export default {
     },
     checkEmpty: function (seat) {
       if (this.isSeatsLoaded) {
-        return this.seats[seat].booked === false;
+        const isFilled = this.seats[seat].booked
+        // console.log(this.seats[seat].booked)
+        return !this.seats[seat].booked
       }
       return false
     },
@@ -168,6 +246,7 @@ export default {
 
       if (email === '' || name === '') {
         this.empty = true
+        this.booking = false
       } else {
         const that = this
         this.bookSeatRequest(seat, name, email)
@@ -175,12 +254,25 @@ export default {
           const seatId = response.data.id
           console.log(seatId)
           this.isBookingWindow = false
-          // go to results page
+
+          this.$router.push({
+            name: 'result',
+            params: {
+              seatNo: seat,
+              name: name,
+              email: email
+            }
+          })
         }).catch(error => {
           const status = error.response.status
 
           if (status === 409) {
-
+            this.isBookingWindow = false
+            this.isSeatBooked = true
+          } else if (status === 404) {
+            console.log("seat not found")
+          } else if (status === 500) {
+            this.invalid = true
           }
         }).finally(_ => {
           this.booking = false
