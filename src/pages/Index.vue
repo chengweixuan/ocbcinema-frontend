@@ -234,7 +234,13 @@ export default {
     Called to reset all seats to empty
      */
     resetSeats: function () {
-      return backendInstance.get('/clear')
+      backendInstance.get('/clear')
+      this.isSeatsLoaded = false
+      this.getSeats()
+        .then(response => {
+          this.seats = response.data
+          this.isSeatsLoaded = true
+        })
     },
     /*
     Called to check the booking status for each seat to display seat status to user
