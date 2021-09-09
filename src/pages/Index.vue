@@ -180,9 +180,9 @@
 import axios from 'axios'
 
 const localhost = 'http://localhost:8080/'
-const cloud = 'https://smollink-heroku.herokuapp.com'
+const cloud = 'https://ocbcinema-backend.herokuapp.com'
 // API endpoint(s)
-const BACKEND_URL = localhost
+const BACKEND_URL = cloud
 
 const backendInstance = axios.create({
   baseURL: BACKEND_URL,
