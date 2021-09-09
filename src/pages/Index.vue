@@ -92,6 +92,8 @@
 
       <br />
 
+      <q-btn push label="Reset Seats" color="red-6" @click="resetSeats()" />
+
       <div class="column items-center">
         <div class="col text-h7" >
           Made by Cheng Weixuan
@@ -148,8 +150,8 @@
         </q-card-section>
 
         <q-card-actions class="popup-bg row" align="right">
-          <q-btn flat label="Cancel" color="grey-10" v-close-popup />
-          <q-btn flat label="Book Seat" color="red-6" @click="bookSeat()" :loading="booking">
+          <q-btn flat push label="Cancel" color="grey-10" v-close-popup />
+          <q-btn flat push label="Book Seat" color="red-6" @click="bookSeat()" :loading="booking">
             <template v-slot:loading>
               <q-spinner-ios />
             </template>
@@ -227,6 +229,12 @@ export default {
       formData.append('name', name)
       formData.append('email', email)
       return backendInstance.post('/bookSeat', formData)
+    },
+    /*
+    Called to reset all seats to empty
+     */
+    resetSeats: function () {
+      return backendInstance.get('/clear')
     },
     /*
     Called to check the booking status for each seat to display seat status to user
