@@ -1,6 +1,23 @@
 # Ocbcinema (ocbcinema-frontend)
 
-Application for booking seats at the OCBCinema
+Frontend component for the OCBCinema seat booking web service.
+Developed for OCBC Hack It!
+Made with Vue.js using the Quasar framework.
+
+Backend component and more information on the project found at: https://github.com/chengweixuan/OCBCinema
+
+## This project is now deployed live at:  https://ocbcinema.herokuapp.com/
+
+## Important for local set-up
+```bash
+Edit src/pages/Index.vue at line 185
+
+Change
+const BACKEND_URL = cloud
+to
+const BACKEND_URL = localhost
+
+```
 
 ## Install the dependencies
 ```bash
