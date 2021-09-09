@@ -1,6 +1,5 @@
 const
   express = require('express'),
-  path = require('path'),
   serveStatic = require('serve-static'),
   history = require('connect-history-api-fallback'),
   port = process.env.PORT || 5000
