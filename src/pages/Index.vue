@@ -179,6 +179,9 @@
 <script>
 import axios from 'axios'
 
+/*
+ This section is used for configuring connection to back end
+ */
 const localhost = 'http://localhost:8080/'
 const cloud = 'https://ocbcinema-backend.herokuapp.com'
 // API endpoint(s)
@@ -209,12 +212,15 @@ export default {
     }
   },
   methods: {
-    getTest: function () {
-      return backendInstance.get('/testString')
-    },
+    /*
+    GET request to back end for current state of cinema
+     */
     getSeats: function () {
       return backendInstance.get('/getSeats')
     },
+    /*
+    POST request to back end to book a seat
+     */
     bookSeatRequest: function (seatNo, name, email) {
       const formData = new FormData()
       formData.append('seatNo', seatNo)
@@ -222,14 +228,18 @@ export default {
       formData.append('email', email)
       return backendInstance.post('/bookSeat', formData)
     },
+    /*
+    Called to check the booking status for each seat to display seat status to user
+     */
     checkEmpty: function (seat) {
       if (this.isSeatsLoaded) {
-        const isFilled = this.seats[seat].booked
-        // console.log(this.seats[seat].booked)
         return !this.seats[seat].booked
       }
       return false
     },
+    /*
+    Calls seat booking window
+     */
     showBookedSeat: function (seat) {
       this.isSeatBooked = true
       this.bookedSeat = seat
@@ -238,6 +248,11 @@ export default {
       this.isBookingWindow = true
       this.bookedSeat = seat
     },
+    /*
+    Called when user enters the form to book a seat
+    Calls bookSeatRequest to back end
+    Handles bad HTTP response status and informs the user accordingly
+     */
     bookSeat: function () {
       const seat = this.bookedSeat
       const name = this.name
@@ -280,6 +295,9 @@ export default {
       }
     }
   },
+  /*
+  Called upon startup to update seats to user
+   */
   created: function () {
     this.getSeats()
     .then(response => {
